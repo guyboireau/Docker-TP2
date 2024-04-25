@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   app:
     build:
@@ -10,12 +8,12 @@ services:
       PORT: 1337
       REDIS_HOST: redis
       REDIS_PORT: 6379
-      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_HOST: mysql
       MYSQL_PORT: 3306
       MYSQL_DB: ${MYSQL_DB}
       MYSQL_USERNAME: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      FILE_PATH_TO_CHECK: ${FILE_PATH_TO_CHECK}
+      FILE_PATH_TO_CHECK: ./dummy.txt
     ports:
       - "1337:1337"
     volumes:
@@ -28,10 +26,10 @@ services:
     image: mysql:latest
     restart: always
     environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DB}
       MYSQL_USER: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
       - ./my.cnf:/etc/mysql/my.cnf
 
