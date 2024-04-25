@@ -5,6 +5,7 @@ services:
     build:
       context: .
       target: production
+    hostname: mydocker
     environment:
       PORT: 1337
       REDIS_HOST: redis
@@ -32,7 +33,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
-      - mysql-data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/my.cnf
 
   redis:
     image: redis:latest

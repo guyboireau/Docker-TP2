@@ -72,6 +72,7 @@ app.get("/", async (req: Request, res: Response) => {
     });
 
     const result = await mysqlConnection.query("SELECT 1");
+    console.log(result);
     if (result) {
       data.mysql = Status.OK;
     }

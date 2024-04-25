@@ -1,4 +1,4 @@
-# Stage 1: Build
+# Build
 FROM node:20 AS build
 WORKDIR /app
 COPY package*.json ./
@@ -6,7 +6,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Stage 2: Development
+# Development
 FROM node:20 AS development
 WORKDIR /app
 COPY package*.json ./
@@ -15,7 +15,7 @@ COPY . .
 EXPOSE 3000
 CMD ["npm", "run", "develop"]
 
-# Stage 3: Production
+# Production
 FROM node:20 AS production
 WORKDIR /app
 COPY package*.json ./
